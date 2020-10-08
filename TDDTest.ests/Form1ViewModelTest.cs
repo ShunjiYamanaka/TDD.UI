@@ -14,6 +14,11 @@ namespace TDDTest.ests
             Assert.AreEqual("", viewModel.ATextBoxText);
             Assert.AreEqual("", viewModel.BTextBoxText);
             Assert.AreEqual("", viewModel.ResultLabelText);
+
+            viewModel.ATextBoxText = "2";
+            viewModel.BTextBoxText = "5";
+            viewModel.CalculationAction();
+            Assert.AreEqual("7", viewModel.ResultLabelText);
         }
     }
 }

@@ -12,17 +12,20 @@ namespace TDD.UI
 {
     public partial class Form1View : Form
     {
+        private Form1ViewModel _viewModel = new Form1ViewModel();
         public Form1View()
         {
             InitializeComponent();
+
+            //　データバインド
+            ATextBox.DataBindings.Add("Text", _viewModel, "ATextBoxText");
+            BTextBox.DataBindings.Add("Text", _viewModel, "BTextBoxText");
+            ResultLabel.DataBindings.Add("Text", _viewModel, "ResultLabelText");
         }
 
         private void CalculationButton_Click(object sender, EventArgs e)
         {
-            int a = Convert.ToInt32(ATextBox.Text);
-            int b = Convert.ToInt32(BTextBox.Text);
-
-            ResultLabel.Text = Calculation.Sum(a, b).ToString();
+            _viewModel.CalculationAction();
         }
     }
 }
